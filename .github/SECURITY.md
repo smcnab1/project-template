@@ -11,7 +11,7 @@ Only the latest release line is actively supported. Please make sure you are tes
 If you believe you’ve found a security vulnerability in this repository:
 
 - **Do not open a public issue or pull request.**
-- Please email: **sam@sammcnab.co.uk**
+- Please contact: [sammcnab.co.uk](https://sammcnab.co.uk)
 - Provide as much detail as possible (steps to reproduce, affected files/versions, impact).
 - Avoid including sensitive personal data in the report. If needed, we will request additional details via a secure channel.
 
