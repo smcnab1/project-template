@@ -6,7 +6,6 @@
     ".": {
       "release-type": "simple",
       "changelog-path": "CHANGELOG.md",
-      "extra-labels": ["Type: Release", "Status: Awaiting Review"],
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true
     }

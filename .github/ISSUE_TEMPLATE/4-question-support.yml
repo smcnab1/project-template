@@ -1,0 +1,34 @@
+name: Question or Support
+description: Ask a question or request help with the project
+title: "[Question] "
+labels:
+  - "Type: Question"
+  - "Status: Awaiting Review"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before submitting, please check the README and existing issues.
+
+        Do not include secrets, credentials or sensitive information.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What would you like help with?
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you tried?
+      description: Describe anything you have already tried or checked.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add relevant logs, screenshots, configuration or other information.

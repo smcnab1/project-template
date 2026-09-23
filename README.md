@@ -20,8 +20,6 @@ The template includes:
 
 - Standard repository documentation and community files
 - GitHub Actions workflow scaffolding
-- Repository initialisation and maintenance automation
-- Markdown documentation tooling
 - Reusable project structure
 - Issue and pull request configuration
 - MIT licence
@@ -32,8 +30,6 @@ The supplied workflows are intended as a starting point. Review and adjust them 
 
 - GitHub Actions
 - Markdown
-- Python
-- Shell
 
 ## Using the template
 
@@ -70,13 +66,13 @@ The exact structure may evolve, but the template is intended to provide the comm
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   ├── workflows/
+│   ├── SECURITY.md
+│   ├── SUPPORT.md
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE.md
-├── README.md
-├── SECURITY.md
-└── SUPPORT.md
+└── README.md
 ```
 
 Project-specific repositories created from this template can add, replace or remove files as required.
@@ -122,13 +118,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for repository-specific contribution guid
 
 For bugs, feature requests or other repository-related queries, use [GitHub Issues][issues-url].
 
-See [SUPPORT.md](SUPPORT.md) for further guidance.
+See [SUPPORT.md](.github/SUPPORT.md) for further guidance.
 
 ## Security
 
 Please do not report security vulnerabilities through a public GitHub issue.
 
-See [SECURITY.md](SECURITY.md) for the appropriate reporting process.
+See [SECURITY.md](.github/SECURITY.md) for the appropriate reporting process.
 
 ## Licence
 
