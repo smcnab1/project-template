@@ -66,10 +66,9 @@ The exact structure may evolve, but the template is intended to provide the comm
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   ├── workflows/
-│   └── SECURITY.md
-│   └── SUPPORT.md
+│   ├── SECURITY.md
+│   ├── SUPPORT.md
 │   └── PULL_REQUEST_TEMPLATE.md
-
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE.md
