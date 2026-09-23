@@ -6,10 +6,6 @@
   color: "2fbceb"
   description: "Documentation is missing, unclear or incorrect."
 
-- name: "Type: Enhancement"
-  color: "54b2ff"
-  description: "An improvement to existing functionality."
-
 - name: "Type: Feature"
   color: "54b2ff"
   description: "A new feature or capability."
@@ -21,6 +17,10 @@
 - name: "Type: Question"
   color: "9309ab"
   description: "A question or support request."
+
+- name: "Type: Dependency"
+  color: "54b2ff"
+  description: "Dependency related issue or PR."
 
 - name: "Status: Awaiting Review"
   color: "24d15d"
@@ -42,9 +42,17 @@
   color: "ff008c"
   description: "Task is considered critical."
 
+- name: "Priority: High"
+  color: "8a0b1e"
+  description: "Task is considered high priority."
+
+- name: "Priority: Medium"
+  color: "ffa500"
+  description: "Task is considered medium priority."
+
 - name: "Priority: Low"
   color: "690a34"
-  description: "Task is considered lower priority."
+  description: "Task is considered low priority."
 
 - name: "Duplicate"
   color: "eb862d"

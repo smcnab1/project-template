@@ -12,8 +12,5 @@ updates:
     labels:
       - "Type: Dependency"
       - "Status: Awaiting Review"
-    reviewers:
-      - "smcnab1"
-    # Enable immediate security PRs
     allow:
       - dependency-type: "all"
