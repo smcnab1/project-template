@@ -28,11 +28,6 @@ on:
         type: boolean
         required: false
         default: false
-      generate_index_file:
-        description: "Generate Index File"
-        type: boolean
-        required: false
-        default: false
       download_files_or_folder:
         description: "Download a file or folder from a GitHub repo"
         type: string
@@ -53,8 +48,7 @@ jobs:
     if: >
       ${{
         github.event.inputs.replace_links_in_markdown == 'true' ||
-        github.event.inputs.generate_table_of_contents == 'true' ||
-        github.event.inputs.generate_index_file == 'true'
+        github.event.inputs.generate_table_of_contents == 'true'
       }}
     steps:
       - uses: actions/checkout@v4
@@ -69,13 +63,6 @@ jobs:
         if: ${{ github.event.inputs.generate_table_of_contents == 'true' }}
         run: |
           npx markdown-toc-gen@1.2.0 update README.md
-
-      - name: Generate Index File
-        if: ${{ github.event.inputs.generate_index_file == 'true' }}
-        env:
-          INPUT_STORE: ${{ github.event.repository.url }}
-        run: |
-          python3 .github/py_repo_tools/generate_index_file.py
 
       - name: Commit changes (docs)
         run: |

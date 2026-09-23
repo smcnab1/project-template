@@ -1,165 +1,147 @@
-<!-- TOP ROW OF BADGES -->
+# Project Template
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
+[![Stars][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![Kofi][kofi-badge]][kofi-url]
 
-<a name="readme-top"></a>
+A reusable GitHub repository template providing a clean starting point for new projects, with repository scaffolding, automation and standard project documentation.
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/smcnab1/project-template-repo">
-    <img src="images/avatar.png" alt="Logo" width="80" height="80">
-  </a>
+## Overview
 
-<h3 align="center">Project Template Repo</h3>
+`project-template` is designed to reduce the repetitive setup required when creating a new GitHub repository.
 
-  <p align="center">
-    Jumpstart your development with this versatile template. 🚀📁
-    <br />
-    <a href="https://smcnab1.github.io/project-template-repo/"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/smcnab1/project-template-repo">View Demo</a>
-    ·
-    <a href="https://github.com/smcnab1/project-template-repo/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/smcnab1/project-template-repo/issues">Request Feature</a>
-  </p>
-</div>
+It provides a reusable baseline containing common repository files, GitHub Actions workflows and supporting automation that can be adapted to suit individual projects.
 
-<details>
-  <summary>View Contents</summary>
+## Included
 
-_Last Updated DATE_
+The template includes:
 
-<!-- toc -->
+- Standard repository documentation and community files
+- GitHub Actions workflow scaffolding
+- Repository initialisation and maintenance automation
+- Markdown documentation tooling
+- Reusable project structure
+- Issue and pull request configuration
+- MIT licence
 
-- [About The Project](#about-the-project)
-  - [Features](#features)
-  - [Built with](#built-with)
-- [Getting started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-- [Back Matter](#back-matter)
-  - [Roadmap](#roadmap)
-  - [Contributing](#contributing)
-  - [License](#license)
+The supplied workflows are intended as a starting point. Review and adjust them for the requirements and permissions of each repository created from this template.
 
-<!-- tocstop -->
+## Technologies
 
-</details>
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-<div align="center">
-  <a href="https://github.com/smcnab1/project-template-repo">
-    <img src="images/screenshot.png" alt="Logo" width="100%" height="auto">
-  </a>
-  </div>
-  
-This repository can be used as a template to load your new repository with ease. Including the following features to save your time in generating new repositories.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Features
-
-- Auto-Update Documentation Links with current repo name
-- Update Email Addresses: CODE_OF_CONDUCT, SECURITY.
-- Download files & folders from another GitHub Repo
-- Generate Markdown styled index file with SEO details
-- Generate Table of Contents into README
-- Several files already created for you as a template
-
-### Built with
-
+- GitHub Actions
 - Markdown
 - Python
-- GitHub Actions
 - Shell
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Using the template
 
-## Getting started
+### Create a repository
 
-### Prerequisites
+1. Select **Use this template** on GitHub, or use the [Create a new repository from this template][template-url] link.
+2. Choose the repository owner.
+3. Enter the new repository name and description.
+4. Choose the required visibility.
+5. Select **Create repository**.
 
-Accessible using browser or GitHub mobile application.
+GitHub creates a new repository containing the files from this template without carrying across the template repository's Git history.
 
-### Install
+### Review the generated repository
 
-1. Click on [use template](https://github.com/new?template_name=project-template-repo&template_owner=smcnab1) to generate new repository from template.
+After creating a repository, review the included files and workflows before beginning development.
 
-2. Enter repository name and Description.
+In particular:
 
-3. Generate new repository.
+- Update project-specific documentation and metadata.
+- Remove files or automation that the project does not require.
+- Review `.github/workflows/` and enable only the workflows that are needed.
+- Review repository and environment secrets before enabling workflows that require them.
+- Keep GitHub Actions permissions at the minimum required by each workflow.
 
-4. Navigate to **Settings > Actions > General** and set **_Workflow Permissions_** to _Read and write permissions_
+Where a workflow needs additional GitHub permissions, declare them explicitly using the workflow or job-level `permissions` configuration rather than enabling blanket repository-wide write access.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Repository structure
 
-## Back Matter
+The exact structure may evolve, but the template is intended to provide the common files required for a well-maintained GitHub repository.
 
-<!-- ROADMAP -->
+```text
+.
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   ├── workflows/
+│   └── PULL_REQUEST_TEMPLATE.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── SECURITY.md
+└── SUPPORT.md
+```
 
-### Roadmap
+Project-specific repositories created from this template can add, replace or remove files as required.
 
-- [ ] Finalise Documentation.
-- [ ] Remove need for config file, all set within Actions.
-- [ ] Combination Selection instead of individual options.
+## GitHub Actions
 
-See the [open issues](https://github.com/smcnab1/project-template-repo/issues) for a full list of proposed features (and known issues).
+Automation included with this repository should be treated as reusable scaffolding rather than a universal configuration.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Before enabling a workflow:
 
-<!-- CONTRIBUTING -->
+1. Review its triggers.
+2. Review all third-party actions it uses.
+3. Check the permissions granted to `GITHUB_TOKEN`.
+4. Remove permissions that are not required.
+5. Configure any required repository or environment secrets.
+6. Test the workflow in the generated repository.
 
-<a name="contributing"></a>
+Prefer explicit least-privilege permissions, for example:
 
-### Contributing
+```yaml
+permissions:
+  contents: read
+```
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Grant additional permissions only to the jobs or workflows that require them.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" or "feature-request".
-Don't forget to give the project a star! Thanks again!
+## Contributing
 
-1. Fork the Project.
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions, fixes and improvements are welcome.
 
-### License
+For significant changes:
+
+1. Fork the repository.
+2. Create a branch for the change.
+3. Make and test the changes.
+4. Commit the changes with a clear commit message.
+5. Push the branch to your fork.
+6. Open a pull request.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for repository-specific contribution guidance.
+
+## Support
+
+For bugs, feature requests or other repository-related queries, use [GitHub Issues][issues-url].
+
+See [SUPPORT.md](SUPPORT.md) for further guidance.
+
+## Security
+
+Please do not report security vulnerabilities through a public GitHub issue.
+
+See [SECURITY.md](SECURITY.md) for the appropriate reporting process.
+
+## Licence
 
 This project is licensed under the [MIT License](LICENSE.md).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/smcnab1/project-template-repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/smcnab1/project-template-repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/smcnab1/project-template-repo.svg?style=for-the-badge
-[forks-url]: https://github.com/smcnab1/project-template-repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/smcnab1/project-template-repo.svg?style=for-the-badge
-[stars-url]: https://github.com/smcnab1/project-template-repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/smcnab1/project-template-repo.svg?style=for-the-badge
-[issues-url]: https://github.com/smcnab1/project-template-repo/issues
-[license-shield]: https://img.shields.io/github/license/smcnab1/project-template-repo.svg?style=for-the-badge
-[license-url]: https://github.com/smcnab1/project-template-repo/blob/master/LICENSE.md
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/sammcnab/
-[product-screenshot]: images/screenshot.png
-[email-badge]: https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white
-[email-url]: mailto:sam@sammcnab.co.uk
-[git-badge]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
-[git-url]: https://github.com/smcnab1
-[kofi-badge]: https://ko-fi.com/img/githubbutton_sm.svg
-[kofi-url]: https://ko-fi.com/sammcnab1
+[contributors-shield]: https://img.shields.io/github/contributors/smcnab1/project-template.svg?style=flat-square
+[contributors-url]: https://github.com/smcnab1/project-template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/smcnab1/project-template.svg?style=flat-square
+[forks-url]: https://github.com/smcnab1/project-template/forks
+[stars-shield]: https://img.shields.io/github/stars/smcnab1/project-template.svg?style=flat-square
+[stars-url]: https://github.com/smcnab1/project-template/stargazers
+[issues-shield]: https://img.shields.io/github/issues/smcnab1/project-template.svg?style=flat-square
+[issues-url]: https://github.com/smcnab1/project-template/issues
+[license-shield]: https://img.shields.io/github/license/smcnab1/project-template.svg?style=flat-square
+[license-url]: https://github.com/smcnab1/project-template/blob/main/LICENSE.md
+[template-url]: https://github.com/new?template_name=project-template&template_owner=smcnab1
