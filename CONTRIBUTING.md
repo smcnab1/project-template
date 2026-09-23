@@ -9,7 +9,7 @@ Note that no matter how you contribute, your participation is governed by our
 
 Fork the project, make a change, and send a pull request!
 
-Make sure you read and follow the instructions in the [pull request template](PULL_REQUEST_TEMPLATE.md). And note
+Make sure you read and follow the instructions in the [pull request template](.github/PULL_REQUEST_TEMPLATE.md). And note
 that all participation in this project (including code submissions) is
 governed by our [Code of Conduct](CODE_OF_CONDUCT.md).
 

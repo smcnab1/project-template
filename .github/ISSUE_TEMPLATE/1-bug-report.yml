@@ -1,56 +1,57 @@
-name: "🐛 Bug Report"
-description: Report a bug to help us improve
-title: "[BUG] "
-labels: ["Type: Bug"]
-assignees:
-  - smcnab1
+name: Bug Report
+description: Report something that is not working as expected
+title: "[Bug] "
+labels:
+  - "Type: Bug"
+  - "Status: Awaiting Review"
+
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug.
+
+        Please do not include secrets, credentials or sensitive data.
+        Security vulnerabilities should be reported privately using the repository Security tab.
+
   - type: textarea
     id: description
     attributes:
-      label: Describe the bug
-      description: A clear and concise description of the problem.
-      placeholder: "The app crashes when I click X..."
+      label: What happened?
+      description: Describe the problem clearly and concisely.
+      placeholder: Describe what went wrong.
     validations:
       required: true
 
   - type: textarea
-    id: steps
+    id: reproduce
     attributes:
       label: Steps to reproduce
-      description: How can we reproduce the bug? List each step.
+      description: Provide the minimum steps needed to reproduce the issue.
       placeholder: |
         1. Go to...
-        2. Click on...
-        3. Scroll down to...
-        4. See error
+        2. Select...
+        3. See...
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
+      label: Expected behaviour
       description: What did you expect to happen?
-      placeholder: "It should show Y instead of crashing."
     validations:
       required: true
-
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Screenshots or videos
-      description: Add supporting visuals if available.
 
   - type: input
     id: environment
     attributes:
       label: Environment
-      description: OS, browser/device, version details
-      placeholder: "e.g. macOS 14 / Chrome 118"
+      description: Relevant OS, browser, runtime or version information.
+      placeholder: "e.g. macOS 26, Chrome 140, Node.js 24"
 
   - type: textarea
-    id: extra
+    id: context
     attributes:
       label: Additional context
-      description: Anything else that might help us understand the issue.
+      description: Add relevant logs, screenshots or other information.

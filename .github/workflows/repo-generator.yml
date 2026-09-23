@@ -4,137 +4,113 @@ on:
   workflow_dispatch:
     inputs:
       replace_links_in_markdown:
-        description: "Update all links"
+        description: "Update template repository links"
         type: boolean
         required: false
-        default: false
-      update_license_date:
-        description: "Update Licence Date"
-        type: boolean
-        required: false
-        default: false
-      update_code_of_conduct_email:
-        description: "Update Code of Conduct email"
-        type: boolean
-        required: false
-        default: false
-      update_security_policy_email:
-        description: "Update Security Policy email"
-        type: boolean
-        required: false
-        default: false
-      generate_table_of_contents:
-        description: "Generate Table of Contents"
-        type: boolean
-        required: false
-        default: false
-      download_files_or_folder:
-        description: "Download a file or folder from a GitHub repo"
-        type: string
-        required: false
-        default: ""
+        default: true
 
-permissions:
-  contents: write
+      generate_table_of_contents:
+        description: "Update README table of contents"
+        type: boolean
+        required: false
+        default: false
+
+permissions: {}
 
 concurrency:
-  group: repo-generator-${{ github.ref }}
+  group: repo-generator-${{ github.repository }}
   cancel-in-progress: true
 
 jobs:
-  docs:
-    name: Docs & Index
-    runs-on: ubuntu-22.04
-    if: >
-      ${{
-        github.event.inputs.replace_links_in_markdown == 'true' ||
-        github.event.inputs.generate_table_of_contents == 'true'
-      }}
+  generate:
+    name: Generate repository updates
+    runs-on: ubuntu-24.04
+
+    if: ${{ inputs.replace_links_in_markdown || inputs.generate_table_of_contents }}
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    env:
+      BRANCH_NAME: automation/repo-generator-${{ github.run_id }}-${{ github.run_attempt }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
 
-      - name: Update links in Markdown
-        if: ${{ github.event.inputs.replace_links_in_markdown == 'true' }}
+      - name: Update repository links
+        if: ${{ inputs.replace_links_in_markdown }}
+        shell: bash
         run: |
-          pip install --disable-pip-version-check --no-input requests
-          python3 .github/py_repo_tools/replace_repo_links.py
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
 
-      - name: Generate Table of Contents
-        if: ${{ github.event.inputs.generate_table_of_contents == 'true' }}
-        run: |
-          npx markdown-toc-gen@1.2.0 update README.md
+          placeholder = "smcnab1/project-template-repo"
+          replacement = os.environ["GITHUB_REPOSITORY"]
 
-      - name: Commit changes (docs)
+          changed = 0
+
+          for path in Path(".").rglob("*.md"):
+              if ".git" in path.parts:
+                  continue
+
+              content = path.read_text(encoding="utf-8")
+              updated = content.replace(placeholder, replacement)
+
+              if updated != content:
+                  path.write_text(updated, encoding="utf-8")
+                  print(f"Updated {path}")
+                  changed += 1
+
+          print(f"Updated {changed} Markdown file(s)")
+          PY
+
+      - name: Setup Node.js
+        if: ${{ inputs.generate_table_of_contents }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Update README table of contents
+        if: ${{ inputs.generate_table_of_contents }}
+        run: npx --yes markdown-toc-gen@1.2.0 update README.md
+
+      - name: Check for changes
+        id: changes
+        shell: bash
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes generated."
           else
-            git commit -m "chore(docs): automated updates [skip ci]"
-            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --stat
           fi
 
-  policies:
-    name: Policies & Metadata
-    runs-on: ubuntu-22.04
-    if: >
-      ${{
-        github.event.inputs.update_license_date == 'true' ||
-        github.event.inputs.update_code_of_conduct_email == 'true' ||
-        github.event.inputs.update_security_policy_email == 'true'
-      }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Update Licence Date
-        if: ${{ github.event.inputs.update_license_date == 'true' }}
+      - name: Commit changes
+        if: ${{ steps.changes.outputs.changed == 'true' }}
+        shell: bash
         run: |
-          python3 .github/py_repo_tools/update_license_date.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Update Code of Conduct email
-        if: ${{ github.event.inputs.update_code_of_conduct_email == 'true' }}
+          git checkout -b "$BRANCH_NAME"
+          git add -- '*.md'
+          git commit -m "chore: update repository template"
+          git push origin "HEAD:$BRANCH_NAME"
+
+      - name: Create pull request
+        if: ${{ steps.changes.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
         run: |
-          python3 .github/py_repo_tools/replace_code_of_conduct_info.py
-
-      - name: Update Security Policy email
-        if: ${{ github.event.inputs.update_security_policy_email == 'true' }}
-        run: |
-          python3 .github/py_repo_tools/replace_security_policy_email.py
-
-      - name: Commit changes (policies)
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore(policies): automated updates [skip ci]"
-            git push
-          fi
-
-  download:
-    name: Download from GitHub
-    runs-on: ubuntu-22.04
-    if: ${{ github.event.inputs.download_files_or_folder != '' }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Download file/folder
-        run: |
-          chmod +x .github/py_repo_tools/shell_scripts/github_downloader.sh
-          .github/py_repo_tools/shell_scripts/github_downloader.sh "${{ github.event.inputs.download_files_or_folder }}"
-
-      - name: Commit changes (download)
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore(download): added files via downloader [skip ci]"
-            git push
-          fi
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$BRANCH_NAME" \
+            --title "chore: update repository template" \
+            --body "Automated repository-template updates generated by the Repo Generator workflow."

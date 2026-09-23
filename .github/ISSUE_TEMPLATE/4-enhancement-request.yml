@@ -1,36 +1,35 @@
-name: "🚀 Enhancement Request"
-description: Suggest an enhancement to improve an existing feature
-title: "[ENH] "
-labels: ["Type: Enhancement"]
-assignees:
-  - smcnab1
+name: Enhancement
+description: Suggest an improvement to existing functionality
+title: "[Enhancement] "
+labels:
+  - "Type: Enhancement"
+  - "Status: Awaiting Review"
+
 body:
   - type: textarea
-    id: problem
+    id: current
     attributes:
-      label: Related problem
-      description: Is your enhancement request related to a problem? If so, describe it.
-      placeholder: "I'm always frustrated when..."
+      label: Current behaviour
+      description: What existing functionality could be improved?
     validations:
       required: true
 
   - type: textarea
-    id: solution
+    id: improvement
     attributes:
-      label: Proposed solution
-      description: A clear and concise description of the improvement you’d like to see.
-      placeholder: "Improve X to make Y easier."
+      label: Proposed improvement
+      description: Describe how you would improve it.
+    validations:
+      required: true
 
   - type: textarea
-    id: alternatives
+    id: benefit
     attributes:
-      label: Alternatives considered
-      description: What other solutions or approaches have you thought about?
-      placeholder: "Alternatively, Z could be improved..."
+      label: Benefit
+      description: What would this improvement make easier or better?
 
   - type: textarea
-    id: extra
+    id: context
     attributes:
       label: Additional context
-      description: Anything else we should know?
-      placeholder: "Screenshots, references, or examples..."
+      description: Add examples, references or other useful information.

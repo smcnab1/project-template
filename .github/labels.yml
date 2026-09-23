@@ -2,21 +2,25 @@
   color: "e80c0c"
   description: "Something isn't working as expected."
 
+- name: "Type: Documentation"
+  color: "2fbceb"
+  description: "Documentation is missing, unclear or incorrect."
+
 - name: "Type: Enhancement"
   color: "54b2ff"
-  description: "Suggest an improvement for an existing feature."
+  description: "An improvement to existing functionality."
 
 - name: "Type: Feature"
   color: "54b2ff"
-  description: "Suggest a new feature."
+  description: "A new feature or capability."
 
 - name: "Type: Security"
   color: "fbff00"
-  description: "A problem or enhancement related to a security issue."
+  description: "Security-related work or remediation."
 
 - name: "Type: Question"
   color: "9309ab"
-  description: "Request for information."
+  description: "A question or support request."
 
 - name: "Status: Awaiting Review"
   color: "24d15d"
@@ -27,8 +31,8 @@
   description: "Currently being worked on."
 
 - name: "Status: Waiting"
-  color: "38C968"
-  description: "Waiting on something else to be ready."
+  color: "38c968"
+  description: "Waiting on another action or dependency."
 
 - name: "Status: Stale"
   color: "66b38a"
@@ -40,11 +44,7 @@
 
 - name: "Priority: Low"
   color: "690a34"
-  description: "Task is considered lower-priority."
-
-- name: "Documentation"
-  color: "2fbceb"
-  description: "An issue/change with the documentation."
+  description: "Task is considered lower priority."
 
 - name: "Duplicate"
   color: "eb862d"
@@ -52,15 +52,15 @@
 
 - name: "Invalid"
   color: "faef50"
-  description: "This issue doesn't seem right."
+  description: "Issue is invalid or cannot be reproduced."
 
 - name: "Won't fix"
   color: "c8d9e6"
-  description: "Reported issue is working as intended."
+  description: "Issue will not be addressed."
 
 - name: "3rd party issue"
   color: "e88707"
-  description: "Caused by external package or dependency."
+  description: "Caused by an external package or dependency."
 
 - name: "OS: Windows"
   color: "aeb1c2"
@@ -68,7 +68,7 @@
 
 - name: "OS: Mac"
   color: "aeb1c2"
-  description: "Mac-specific."
+  description: "macOS-specific."
 
 - name: "OS: Linux"
   color: "aeb1c2"

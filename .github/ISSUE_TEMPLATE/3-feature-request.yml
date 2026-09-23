@@ -1,46 +1,36 @@
-name: "⚙️ Feature Request"
-description: Suggest an idea to improve the project
-title: "[FR] "
-labels: ["Type: Feature"]
-assignees:
-  - smcnab1
+name: Feature Request
+description: Suggest a new capability or feature
+title: "[Feature] "
+labels:
+  - "Type: Feature"
+  - "Status: Awaiting Review"
+
 body:
   - type: textarea
     id: problem
     attributes:
-      label: Related problem
-      description: Is your feature request related to a problem? If so, describe it.
-      placeholder: "I'm always frustrated when..."
+      label: Problem or need
+      description: What problem would this feature solve?
+      placeholder: Describe the problem or use case.
     validations:
       required: true
 
   - type: textarea
-    id: solution
+    id: proposal
     attributes:
-      label: Proposed solution
-      description: A clear and concise description of what you want to happen.
-      placeholder: "Add support for X to improve Y."
+      label: Proposed feature
+      description: Describe the feature you would like to see.
+    validations:
+      required: true
 
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives considered
-      description: What other solutions or features have you thought about?
-      placeholder: "I also considered using Z..."
+      description: Describe any existing alternatives or workarounds.
 
   - type: textarea
-    id: extra
+    id: context
     attributes:
       label: Additional context
-      description: Anything else we should know?
-      placeholder: "Screenshots, references, or examples..."
-
-  - type: checkboxes
-    id: tasks
-    attributes:
-      label: Tasks
-      description: Steps or subtasks that need to be done for this feature.
-      options:
-        - label: Task 1
-        - label: Task 2
-        - label: Task 3
+      description: Add examples, references or other useful information.

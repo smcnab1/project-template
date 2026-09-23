@@ -21,4 +21,4 @@ jobs:
         uses: EndBug/label-sync@v2
         with:
           config-file: .github/labels.yml
-          delete-other-labels: true # change to true if you want to prune labels not in labels.yml
+          delete-other-labels: false # change to true if you want to prune labels not in labels.yml
