@@ -18,3 +18,5 @@ reviews:
   path_instructions:
     - path: "**/*.md"
       instructions: "Verify that setup examples, paths and permissions work in a newly generated repository and match the supplied workflows."
+    - path: ".github/workflows/**"
+      instructions: "Check release-please branch and manifest references, least-privilege permissions and preservation of existing labels during seeding."
