@@ -1,18 +1,11 @@
 # Project Template
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stars][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
 A reusable GitHub repository template providing a clean starting point for new projects, with repository scaffolding, automation and standard project documentation.
 
-## Overview
-
-`project-template` is designed to reduce the repetitive setup required when creating a new GitHub repository.
-
-It provides a reusable baseline containing common repository files, GitHub Actions workflows and supporting automation that can be adapted to suit individual projects.
+Shared presentation and maintenance guidance lives in [the account standards](https://github.com/smcnab1/.github).
 
 ## Included
 
@@ -130,12 +123,6 @@ See [SECURITY.md](.github/SECURITY.md) for the appropriate reporting process.
 
 This project is licensed under the [MIT License](LICENSE.md).
 
-[contributors-shield]: https://img.shields.io/github/contributors/smcnab1/project-template.svg?style=flat-square
-[contributors-url]: https://github.com/smcnab1/project-template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/smcnab1/project-template.svg?style=flat-square
-[forks-url]: https://github.com/smcnab1/project-template/forks
-[stars-shield]: https://img.shields.io/github/stars/smcnab1/project-template.svg?style=flat-square
-[stars-url]: https://github.com/smcnab1/project-template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/smcnab1/project-template.svg?style=flat-square
 [issues-url]: https://github.com/smcnab1/project-template/issues
 [license-shield]: https://img.shields.io/github/license/smcnab1/project-template.svg?style=flat-square
